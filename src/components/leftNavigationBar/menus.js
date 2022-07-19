@@ -3,33 +3,34 @@ import {
   PieChartOutlined,
   DesktopOutlined,
   ContainerOutlined,
-  MailOutlined
+  MailOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 
 export default [
   {
     key: "firstMenu",
     label: "첫 번째 메뉴",
-    icon: <AppstoreOutlined />
+    icon: <AppstoreOutlined />,
   },
   {
     key: "secondMenu",
     label: "두 번째 메뉴",
-    icon: <PieChartOutlined />
+    icon: <PieChartOutlined />,
   },
   {
     key: "thirdMenu",
     label: "세 번째 메뉴",
-    icon: <DesktopOutlined />
+    icon: <DesktopOutlined />,
   },
   {
     key: "fourthMenu",
     label: "네 번째 메뉴",
-    icon: <ContainerOutlined />
+    icon: <ContainerOutlined />,
   },
   {
     key: "fifthMenu",
     label: "다섯 번째 메뉴",
-    icon: <MailOutlined />
-  }
+    icon: <MailOutlined />,
+  },
 ];

@@ -1,19 +1,25 @@
 import React from "react";
 import { Menu } from "antd";
 import MENUS from "./menus";
-import "./index.css";
+import * as S from "./leftNavigator.style";
+import { StarOutlined } from "@ant-design/icons";
 
 const LeftNavigationBar = () => {
+  const [active, setActive] = useState(false);
+
   return (
-    <div className="left-navigation-bar">
+    <S.Positioner>
       <Menu defaultSelectedKeys={[MENUS[0].key]} mode="inline" theme="dark">
-        {MENUS.map(({ key, label, icon }) => (
-          <Menu.Item key={key} icon={icon}>
-            {label}
-          </Menu.Item>
+        {MENUS.map(({ key, label, icon, bookmark }) => (
+          <>
+            <Menu.Item key={key} icon={icon}>
+              {label}
+              <StarOutlined className="bookmark" />
+            </Menu.Item>
+          </>
         ))}
       </Menu>
-    </div>
+    </S.Positioner>
   );
 };
 
