@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "antd";
 import MENUS from "./menus";
 import * as S from "./leftNavigator.style";
-import { StarOutlined } from "@ant-design/icons";
+import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const LeftNavigationBar = () => {
-  const [active, setActive] = useState(false);
+  const [bookMark, setBookmark] = useState([]);
+
+  const onHandleBookMark = (idx) => {
+    setBookmark(!bookMark);
+  };
 
   return (
     <S.Positioner>
-      <Menu defaultSelectedKeys={[MENUS[0].key]} mode="inline" theme="dark">
-        {MENUS.map(({ key, label, icon, bookmark }) => (
+      <Menu mode="vertical" theme="dark">
+        <Menu.Divider />
+        {MENUS.map(({ key, label, icon }) => (
           <>
             <Menu.Item key={key} icon={icon}>
               {label}
-              <StarOutlined className="bookmark" />
+              <span onClick={onHandleBookMark(key)}>
+                {bookMark ? (
+                  <StarFilled className="bookmark" />
+                ) : (
+                  <StarOutlined className="bookmark" />
+                )}
+              </span>
             </Menu.Item>
           </>
         ))}
