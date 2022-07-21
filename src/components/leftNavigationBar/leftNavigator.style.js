@@ -12,5 +12,8 @@ export const Positioner = styled.div`
   .bookmark {
     float: right;
     margin-top: 7.5%;
+    .marked {
+      display: none;
+    }
   }
 `;
