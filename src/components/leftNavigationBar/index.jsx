@@ -23,8 +23,8 @@ const LeftNavigationBar = () => {
         {markedMenu ? (
           markedMenu?.reverse().map(({ key, label, icon }, index) => (
             <>
-              <Menu.Item key={key} icon={icon}>
-                {label}
+              <Menu.Item key={key} icon={MENUS[index].icon}>
+                {MENUS[index].label}
                 <StarFilled
                   className="bookmark"
                   onClick={() => {
