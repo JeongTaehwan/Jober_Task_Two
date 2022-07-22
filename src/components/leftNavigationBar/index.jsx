@@ -5,15 +5,21 @@ import * as S from "./leftNavigator.style";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const LeftNavigationBar = () => {
-  const [mark, setMark] = useState([false, false, false, false, false]);
+  const [bookMarkList, setBookMarkList] = useState([
+    MENUS[0].marked,
+    MENUS[1].marked,
+    MENUS[2].marked,
+    MENUS[3].marked,
+    MENUS[4].marked,
+  ]);
   const [markedMenu, setMarkedMenu] = useState([]);
 
   const onHandleBookmark = (key) => {
-    setMark((mark) => {
-      mark[key] = !mark[key];
-      return mark;
+    setBookMarkList((bookMarkList) => {
+      bookMarkList[key] = !bookMarkList[key];
+      return bookMarkList;
     });
-    let newArr = mark.filter((item) => item === true);
+    let newArr = bookMarkList.filter((item) => item === true);
     setMarkedMenu(newArr);
   };
 
@@ -21,7 +27,7 @@ const LeftNavigationBar = () => {
     <S.Positioner>
       <Menu mode="vertical" theme="dark">
         {markedMenu ? (
-          markedMenu?.reverse().map(({ key, label, icon }, index) => (
+          markedMenu?.reverse().map(({ key }, index) => (
             <>
               <Menu.Item key={key} icon={MENUS[index].icon}>
                 {MENUS[index].label}
@@ -42,16 +48,12 @@ const LeftNavigationBar = () => {
           <>
             <Menu.Item key={key} icon={icon}>
               {label}
-              {!mark ? (
-                ""
-              ) : (
-                <StarOutlined
-                  className="bookmark"
-                  onClick={() => {
-                    onHandleBookmark(index);
-                  }}
-                />
-              )}
+              <StarOutlined
+                className="bookmark"
+                onClick={() => {
+                  onHandleBookmark(index);
+                }}
+              />
             </Menu.Item>
           </>
         ))}
